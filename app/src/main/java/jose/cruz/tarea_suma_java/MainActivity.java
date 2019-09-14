@@ -3,6 +3,8 @@ package jose.cruz.tarea_suma_java;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     // declaración de variables
     EditText sumando1, sumando2;
     Button b_sumar;
+    TextView tv_suma;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         sumando1 = findViewById(R.id.et_sumando1);
         sumando2 = findViewById(R.id.ed_sumando2);
         b_sumar = findViewById(R.id.b_sumar);
+        tv_suma = findViewById(R.id.tv_suma);
 
         // acción del botón
         b_sumar.setOnClickListener(new View.OnClickListener() {
@@ -40,12 +44,52 @@ public class MainActivity extends AppCompatActivity {
                     float s1 = Float.parseFloat(n1);
                     float s2 = Float.parseFloat(n2);
                     float suma = s1 + s2;
-                    ((TextView)findViewById(R.id.tv_suma)).setText(Float.toString(suma));
+                    tv_suma.setText(Float.toString(suma));
                 } // else
 
             } // onClick
 
         }); // b_sumar.setOnClickListener
+
+
+        sumando1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+                tv_suma.setText("");
+
+            }
+        }); // sumando1.addTextChangedListener
+
+
+        sumando2.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+                tv_suma.setText("");
+
+            }
+        }); // sumando2.addTextChangedList
 
 
     } // protected void onCreate
